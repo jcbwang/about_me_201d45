@@ -1,0 +1,17 @@
+
+body{
+    background-color:	#FFFAF0;
+}
+
+h1{
+    color:	#4682B4;
+    border: thick double #32a1ce;
+    width: 400px;
+    padding: 10px;
+    margin:15px;
+
+}
+
+ol li{
+    padding: 15;
+}
