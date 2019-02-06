@@ -4,18 +4,14 @@ var userName = prompt('Hey there, what is your name?');
 if(userName === '') {
   userName = prompt('Can I please know your name?');
 }
-alert('Hi ' + name + ', it\'s nice to meet you!');
-console.log('Asked for name: ' + name);
-
-// do{ 
-//   var name = prompt('Hey there, what is your name?');
-// } while (name === '');
+alert('Hi ' + userName + ', it\'s nice to meet you!');
+console.log('Asked for name: ' + userName);
 
 //Ask for favorite color, respond according to response and log to console.
-var color = prompt('What\'s your favorite color, ' + name + ' ?');
+var color = prompt('What\'s your favorite color?');
 var colorResponse = color.toLowerCase();
 if (colorResponse === 'blue') {
-  alert('Cool, ' + name +', blue is my favorite color too!');
+  alert('Cool, ' + userName +', blue is my favorite color too!');
 } else {
   alert('Ehh, that color is okay..');
 }
@@ -27,7 +23,7 @@ var petResponse = pet.toLowerCase();
 if (petResponse === 'yes' || petResponse === 'y') {
   alert('Awesome! Me too, I have a husky!');
 } else{
-  alert('You should definitely get one, ' + name + '. Pets are awesome really awesome.');
+  alert('You should definitely get one, ' + userName + '. Pets are awesome really awesome.');
 }
 console.log('Asked if they have any pets: ' + pet);
 
@@ -35,7 +31,7 @@ console.log('Asked if they have any pets: ' + pet);
 var hungry = prompt('Are you hungry?');
 var hungryResponse = hungry.toLowerCase();
 if (hungryResponse === 'yes' || hungryResponse === 'y') {
-  alert('So am I, ' + name + ' I haven\'t eaten all day!! Let\'s go grab some tacos.');
+  alert('So am I, ' + userName + ' I haven\'t eaten all day!! Let\'s go grab some tacos.');
 } else{
   alert('Oh really..? I\'m always hungry.');
 }
@@ -64,9 +60,9 @@ if (musicResponse === 'yes' || musicResponse === 'y'){
 var questions = prompt('Do you like my questions?');
 var questionsResponse = questions.toLowerCase();
 if (questionsResponse === 'yes' || questionsResponse === 'y') {
-  alert('I\'m glad, ' + name + '! Let\'s hang out again somtime and get to know each other more!');
+  alert('I\'m glad, ' + userName + '! Let\'s hang out again somtime and get to know each other more!');
 } else{
-  alert('Well then... i\'ll leave you alone. Goodbye ' + name + '!');
+  alert('Well then... i\'ll leave you alone. Goodbye ' + userName + '!');
 }
 console.log('Asked if they like my questions: ' + questions);
 
