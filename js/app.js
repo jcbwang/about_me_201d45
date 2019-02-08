@@ -112,12 +112,10 @@ var sleep = prompt('How many hours of sleep do you think I got last night?');
 
 var correctNumOfHours = '7';
 
-var numOfTries = 1;
-
 console.log('Asked how many hours I slept last night: ' + sleep + ' Guess number: ' + numOfTries);
 
 
-for(numOfTries = 1; numOfTries < 4; numOfTries++){ //test if user gets answer within 4 tries, respond according to their answer.
+for(var numOfTries = 1; numOfTries < 4; numOfTries++){ //test if user gets answer within 4 tries, respond according to their answer.
   if (sleep === correctNumOfHours){
     alert('You are correct!');
     correctAnswersCounter ++;
@@ -154,15 +152,15 @@ var countryFinal = country.toLowerCase();
 var myCountries = ['new zealand' , 'taiwan', 'singapore'];
 
 //first attempt
-numOfTries = 1;
+
 
 for(numOfTries = 1; numOfTries < 6; numOfTries++){
-  for(var i = 0; i < myCountries.length; i++)
-  {
+  for(var i = 0; i < myCountries.length; i++){
     if (countryFinal === myCountries[i]){
       alert('You got it!!');
       correctAnswersCounter ++;
       console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
+      break;
     } else{
       country = prompt('Guess again!');
       console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
