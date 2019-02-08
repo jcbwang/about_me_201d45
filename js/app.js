@@ -9,8 +9,13 @@ var userName = prompt('Hey there, what is your name?');
 if(userName === '') {
   userName = prompt('Can I please know your name?');
 }
-alert('Hi ' + userName + ', it\'s nice to meet you!');
+alert('Hi ' + userName + ', let\'s play a game!');
 console.log('Asked for name: ' + userName);
+
+//Ask if they want to play a game.
+var positive= ['yes','y','sure','of course','YES','Y', 'okay','ok'];
+var negative = ['no','n','no way','no thanks', 'nah'];
+console.log('Asked if they want to play a game: ' )
 
 //Ask for favorite color, respond according to response and log to console, update counter.
 var color = prompt('What\'s your favorite color?');
