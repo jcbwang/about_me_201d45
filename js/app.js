@@ -35,7 +35,7 @@ var petResponse = pet.toLowerCase();
 if (petResponse === 'yes' || petResponse === 'y') {
   alert('Awesome! Me too, I have a husky!');
 } else{
-  alert('You should definitely get one, ' + userName + '. Pets are awesome really awesome.');
+  alert('You should definitely get one, ' + userName + '. Pets are really awesome.');
 }
 console.log('Asked if they have any pets: ' + pet);
 
@@ -93,7 +93,7 @@ if (musicResponse === 'yes'){
 var questions = prompt('Do you like my questions?');
 var questionsResponse = questions.toLowerCase();
 if (questionsResponse === 'yes' || questionsResponse === 'y') {
-  alert('I\'m glad, ' + userName + '! Let\'s hang out again somtime and get to know each other more!');
+  alert('I\'m glad, ' + userName + '! Let me ask you two more then!');
 } else{
   alert('Well then... let me ask you a few more questions, then i\'ll leave you alone.');
 }
@@ -126,7 +126,7 @@ for(numOfTries = 1; numOfTries < 4; numOfTries++){ //test if user gets answer wi
   } else if (sleep < correctNumOfHours){
     alert('Think higher!');
     sleep = prompt('Guess again!');
-  } else if (sleep > correctNumOfHours){
+  } else if(sleep > correctNumOfHours){
     alert('Think lower!');
     sleep = prompt('Guess again!');}
   console.log('Guess number ' + (numOfTries + 1) + ': ' + sleep ); // log to each time
@@ -136,23 +136,48 @@ for(numOfTries = 1; numOfTries < 4; numOfTries++){ //test if user gets answer wi
 if (numOfTries === 4 && sleep !== correctNumOfHours){
   alert('Sorry you\'re out of tries!');
   console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
+}else if(numOfTries === 4 && sleep === correctNumOfHours){
+  alert('You are correct!');
+  console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
 }
 
-//Ask if they know what countries i've lived in. 
+//Ask if they know what countries i've lived in.
 
 //**Don't understand how to check if the string that user entered matches any of the list items. */
 
-// Version 1:
 
+var country = prompt('Can you guess a country i\'ve lived in besides the U.S?');
+console.log('Asked if they can guess a country i\'ve lived in besides U.S.: ' + country);
 
-// var country = prompt('Can you guess a country i\'ve lived in besides the U.S?');
-// console.log('Asked if they can guess a country i\'ve lived in besides U.S.: ' + country);
+var countryFinal = country.toLowerCase();
 
-// var countryFinal = country.toLowerCase();
+var myCountries = ['new zealand' , 'taiwan', 'singapore'];
 
-// var myCountries = ['new zealand' , 'taiwan', 'singapore'];
+//first attempt
+numOfTries = 1;
 
-// numOfTries = 1;
+for(numOfTries = 1; numOfTries < 6; numOfTries++){
+  for(var i = 0; i < myCountries.length; i++)
+  {
+    if (countryFinal === myCountries[i]){
+      alert('You got it!!');
+      correctAnswersCounter ++;
+      console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
+    } else{
+      country = prompt('Guess again!');
+      console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
+      break;
+    }
+    // if (numOfTries === 6){
+    //   alert('Sorry, you\'re out of tries! The correct answers were: New Zealand, Taiwan, and Singapore!:)');
+    //   console.log('Guess number ' + numOfTries + '. Number of correct Answers: ');
+    // }
+  }
+}
+alert('Sorry, you\'re out of tries! The correct answers were: New Zealand, Taiwan, and Singapore!:)');
+console.log('Guess number ' + numOfTries + '. Number of correct Answers: ');
+
+//Second attempt
 
 // for(numOfTries = 1; numOfTries <6; numOfTries++){
 //   if(countryFinal === toString.indexOf(myCountries[0]) || countryFinal === toString.indexOf(myCountries[1]) || countryFinal === toString.indexOf(myCountries[2])){
@@ -170,27 +195,6 @@ if (numOfTries === 4 && sleep !== correctNumOfHours){
 //   console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
 // }
 
-//version 2:
-
-
-// var i;
-
-// for(i = 0; i < myCountries.length; i++){
-//   if (countryFinal === i){
-//     alert('You got it!!');
-//     correctAnswersCounter ++;
-//     console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
-//   } else{
-//     alert('Guess again!');
-//     country = prompt('Can you guess a country i\'ve lived in besides the U.S?');
-//   }
-//   if (numOfTries === 6){
-//     alert('Sorry, you\'re out of tries!');
-//     console.log('Guess number ' + numOfTries + '. Number of correct Answers: ');
-//   }
-//   numOfTries++;
-//   console.log('Guess number ' + numOfTries + ': ' + country);
-// }
 
 
 
