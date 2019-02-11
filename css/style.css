@@ -16,6 +16,32 @@ ol li{
     padding: 15;
 }
 
+ul li{
+    padding: 15;
+}
+
+ol, ul{
+    background-color: rgb(222, 233, 240);
+    margin-left: 40px;
+    width:600px;
+}
+
 h2{
-    color: gray
+    color: gray;
+    border: solid  lightgray;
+    width: 300px;
+    padding:10px;
+    margin: 15px;
+
+}
+.iceland{
+    width: 400px;
+    float: right;
+
+}
+.want{
+    width:300px;
+}
+.visited{
+    width:450px;
 }
