@@ -15,7 +15,7 @@ function ask_name (){
 }
 ask_name();
 
-// // ////////Ask if they want to play a game, respond according list of positive, negative, or other answers.
+// ////////////Ask if they want to play a game, respond according list of positive, negative, or other answers.
 
 var validResponse = false;
 
@@ -46,11 +46,12 @@ function playGame(){
 }
 playGame();
 
-/////////Ask if they own any pets, respond to yes/ no and log to console, update counter.
+// /////////Ask if they own any pets, respond to yes/ no and log to console, update counter.
 
 var correctAnswersCounter = 0;
 
 function pet_question(){
+
   var pet = prompt('Do you own any pets?');
 
   var petResponse = pet.toLowerCase();
@@ -82,7 +83,7 @@ function pet_question(){
 
 pet_question();
 
-// /////////Ask if they are hungry, respond to yes/ no and log to console, update counter.
+// // /////////Ask if they are hungry, respond to yes/ no and log to console, update counter.
 
 function hungry_question(){
   var hungry = prompt('Are you hungry?');
@@ -115,7 +116,7 @@ function hungry_question(){
 }
 hungry_question();
 
-// ////////Ask if they like skiing/snowboarding, respond to yes/ no and log to console, update counter.
+// // ////////Ask if they like skiing/snowboarding, respond to yes/ no and log to console, update counter.
 
 function snowboarding(){
   var snow = prompt('Do you like skiing/ snowboarding?');
@@ -148,7 +149,7 @@ function snowboarding(){
 }
 snowboarding();
 
-// ///////Ask if they like classical music, respond to yes/no and log to console, update counter.
+// // ///////Ask if they like classical music, respond to yes/no and log to console, update counter.
 
 function musicQuestion(){
   var music = prompt('Do you like listening to classical music?');
@@ -181,7 +182,7 @@ function musicQuestion(){
 }
 musicQuestion();
 
-// /////Ask if they like my questions, respond to yes/ no , record to console, update counter.
+// // /////Ask if they like my questions, respond to yes/ no , record to console, update counter.
 
 function questionsQuestion(){
   var questions = prompt('Do you like my questions?');
@@ -214,7 +215,7 @@ function questionsQuestion(){
 }
 questionsQuestion();
 
-// //******** lab 3 starts here ********//
+// // //******** lab 3 starts here ********//
 
 // //Ask how many hours of sleep i got last night (based on random number), respond with 'higher/lower', log to console, update counter.
 
@@ -225,34 +226,40 @@ function sleepQuestion(){
 
   var correctNumOfHours = 6;
 
+  validResponse = false;
+
   for(var numOfTries = 1; numOfTries < 4; numOfTries++){ //test if user gets answer within 4 tries, respond according to their answer.
-    if (sleep == correctNumOfHours){//only works with == and not ===.
+    if (sleep == correctNumOfHours){ ///////only works with == and not ===.
       alert('You are correct!');
       correctAnswersCounter ++;
-      console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
+      console.log('They guessed correctly on try number: ' + numOfTries);
+      validResponse = true;
       break;
     } else if (sleep < correctNumOfHours){
       sleep = prompt('Think Higher!');
+      validResponse = true;
     } else if(sleep > correctNumOfHours){
       sleep = prompt('Think Lower!');
-    }else{
+      validResponse = true;
+    } else if(!validResponse){
       sleep = prompt('Please enter a number!');
     }
-    console.log('Guess number ' + (numOfTries + 1) + ': ' + sleep ); // log to each time
+    console.log('They guessed: ' + sleep + ' on try number ' + numOfTries); // log to each time
   }
   //// log to console even if answers are wrong. Alert when no guesses are correct
-  if (numOfTries == 4 && sleep != correctNumOfHours){
+  if (numOfTries == 4 && sleep !=correctNumOfHours){ //////////only works with == not ===
     alert('Sorry you\'re out of tries!');
-    console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
+    console.log('They did not guess correctly after 4 tries!');
   }else if(numOfTries == 4 && sleep == correctNumOfHours){
     alert('You are correct!');
-    console.log('Number of tries: ' + numOfTries + '. Number of correct Answers: ' + correctAnswersCounter);
+    console.log('They guessed correctly on the fourth try!');
+    correctAnswersCounter++;
   }
+  console.log('total correct: ' + correctAnswersCounter);
 }
 sleepQuestion();
 
-// ///////////Ask if they know what countries i've lived in.
-
+/////////////Ask if they know what countries i've lived in.
 function countryQuestion(){
 
   var country = prompt('Can you guess a country i\'ve lived in besides the U.S?');
@@ -264,41 +271,23 @@ function countryQuestion(){
   var counter = 1;
 
   do{
-    for(var r = 0; r < myCountries.length; r++){
-      if(countryFinal === myCountries[r] && counter === 6){
-        correctAnswersCounter++;
-        alert('You got it!');
-        console.log('Guessed: ' + country);
-        validResponse = true;
-        counter++;
-        break;
-      }
+    if(myCountries.includes(countryFinal)){
+      alert('You got it!');
+      console.log('* Attempt number ' + counter + ': They guessed ' + country + ' correctly!');
+      break;
+    }else{
+      country = prompt('Nice try. Try again!');
+      console.log('* Attempt number ' + counter + ': They guessed ' + country);
+      counter++;
+      break;
     }
-    for(r = 0; r < myCountries.length; r++){
-      if(countryFinal === myCountries[r] && counter < 6){
-        correctAnswersCounter++;
-        prompt('You got it! Can you guess another one?');
-        console.log('Guessed: ' + country);
-        validResponse = true;
-        counter++;
-        break;
-      }
-    }
-    for(r = 0; r < myCountries.length; r++){
-      if(countryFinal !== myCountries[r]){
-        country = prompt('Sorry, try again!');
-        console.log('Guessed: ' + country);
-        validResponse = true;
-        counter++;
-        break;
-      }
-    }
-  } while (counter < 6);
+  }while (counter < 6);
 
   alert('The correct answers were: New Zealand, Taiwan, and Singapore!:)');
   console.log('total correct: ' + correctAnswersCounter);
 }
 countryQuestion();
+
 
 /////////calculate compatibility by testing out score to customize sentence and calculate percentage.
 
@@ -312,43 +301,36 @@ function compatibility(){
   }
   else if (correctAnswersCounter === 1){
     sentenceStarter = 'How sad, ';
-    percentage = '11';
+    percentage = '14';
   }
   else if (correctAnswersCounter === 2){
     sentenceStarter = 'How sad, ';
-    percentage = '22';
+    percentage = '28';
   }
   else if (correctAnswersCounter === 3){
-    sentenceStarter = 'How sad, ';
-    percentage = '33';
+    sentenceStarter = 'Could be better, ';
+    percentage = '42';
   }
   else if (correctAnswersCounter === 4){
-    sentenceStarter = 'Could be better, ';
-    percentage = '44';
+    sentenceStarter = 'Not the best, ';
+    percentage = '57';
   }
   else if (correctAnswersCounter === 5){
-    sentenceStarter = 'Not bad, ';
-    percentage = '56';
+    sentenceStarter = 'Okay , ';
+    percentage = '71';
   }
   else if (correctAnswersCounter === 6){
-    sentenceStarter = 'Good, ';
-    percentage = '67';
+    sentenceStarter = 'Great, ';
+    percentage = '86';
   }
   else if (correctAnswersCounter === 7){
-    sentenceStarter = 'Great, ';
-    percentage = '78';
-  }
-  else if (correctAnswersCounter === 8){
     sentenceStarter = 'Awesome, ';
-    percentage = '89';
-  }
-  else if (correctAnswersCounter === 9){
-    sentenceStarter = 'Amazing, ';
     percentage = '100';
   }
+ 
 
-  //display message
-  var message = (sentenceStarter + userName + ', we are ' + percentage + '% compatible!' + ' You got ' + correctAnswersCounter + ' out of 9 questions right.');
+  ////////display message
+  var message = (sentenceStarter + userName + ', we are ' + percentage + '% compatible!' + ' You got ' + correctAnswersCounter + ' out of 7 questions right.');
 
   alert(message);
 }
